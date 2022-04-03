@@ -2,17 +2,27 @@
 #include <iostream>
 #include "button.cpp"
 
+sf::Color colors[] = {
+  sf::Color::Black,
+  sf::Color::White,
+  sf::Color::Red,
+  sf::Color::Green,
+  sf::Color::Blue,
+  sf::Color::Yellow,
+  sf::Color::Magenta,
+  sf::Color::Cyan,
+};
+
 int main() {
-  sf::RenderWindow window(sf::VideoMode(1200, 1000), "Pejncior2115");
+  sf::RenderWindow window(sf::VideoMode(1400, 1000), "Pejncior2115");
   sf::VertexArray line;
   std::vector<sf::VertexArray> pixels;
   sf::Color color = sf::Color::Black;
 
   std::vector<Button> colorPalette;
-  
-  colorPalette.push_back(Button(sf::Vector2f(10, 10), sf::Vector2f(50, 50), sf::Color::Green));
-  colorPalette.push_back(Button(sf::Vector2f(70, 10), sf::Vector2f(50, 50), sf::Color::Red));
-  colorPalette.push_back(Button(sf::Vector2f(130, 10), sf::Vector2f(50, 50), sf::Color::Blue));
+  for (int i = 0; i < sizeof(colors); i++) {
+    colorPalette.push_back(Button(sf::Vector2f((i+1) * 10 + i*50, 10), sf::Vector2f(50, 50), colors[i]));
+  }
 
   window.setFramerateLimit(30);
   line.setPrimitiveType(sf::LinesStrip);
