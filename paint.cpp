@@ -20,11 +20,9 @@ int main() {
   sf::Color color = sf::Color::Black;
 
   std::vector<Button> colorPalette;
-  for (int i = 0; i < sizeof(colors); i++) {
+  for (int i = 0; i < sizeof(colors); i++) 
     colorPalette.push_back(Button(sf::Vector2f((i+1) * 10 + i*50, 10), sf::Vector2f(50, 50), colors[i]));
-  }
-
-  window.setFramerateLimit(30);
+  
   line.setPrimitiveType(sf::LinesStrip);
 
   while (window.isOpen()) {
@@ -41,7 +39,7 @@ int main() {
           pixels.push_back(line);
 
         // BUTTON HOLD
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && pos.y > 100)
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
           pixels.back().append(sf::Vertex(sf::Vector2f(pos.x, pos.y), color));
 
         // BUTTON RELEASED
